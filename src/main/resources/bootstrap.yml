@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      uri: http://pratik:my2123@localhost:8888
+  application:
+    name: config-client
+  profiles:
+    active: production
+    
+management:
+  endpoint:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: env

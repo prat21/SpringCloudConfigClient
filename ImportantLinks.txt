@@ -1,0 +1,16 @@
+1. Spring cloud config server:
+
+https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.0.M1/#_quick_start
+https://www.baeldung.com/spring-cloud-configuration
+https://howtodoinjava.com/spring-cloud/spring-cloud-config-server-git/
+https://www.baeldung.com/spring-cloud-bootstrapping
+
+2. Difference between bootstrap.properties and application.properties:
+
+https://cloud.spring.io/spring-cloud-commons/multi/multi__spring_cloud_context_application_context_services.html
+https://stackoverflow.com/questions/32997352/what-is-the-difference-between-putting-a-property-on-application-yml-or-bootstra
+
+
+3. Getting the /env endpoint work in spring-boot-actuator 2.x:
+
+https://www.baeldung.com/spring-boot-actuators#boot-2x-actuator
