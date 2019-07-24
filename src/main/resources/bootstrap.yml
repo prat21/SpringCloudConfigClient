@@ -1,11 +1,11 @@
 spring:
   cloud:
     config:
-      uri: http://pratik:my2123@localhost:8888
+      uri: ${env.uri:http://pratik:my2123@localhost:8888}
   application:
     name: config-client
   profiles:
-    active: production
+    active: default
     
 management:
   endpoint:

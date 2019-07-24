@@ -1,0 +1,25 @@
+Repository implementations generally behave like a Spring Boot application, loading configuration files from a spring.config.name equal to the 
+{application} parameter, and spring.profiles.active equal to the {profiles} parameter. 
+Precedence rules for profiles are also the same as in a regular Spring Boot application: Active profiles take precedence over defaults, and, 
+if there are multiple profiles, the last one wins (similar to adding entries to a Map).
+
+From: https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.0.M1/#_quick_start
+-----------------------------------------------------------------------------------------------------------------
+
+To provide the environment variable "env.uri" in: ${env.uri:http://pratik:my2123@localhost:8888}, go to run configurations -> arguments ->
+VM arguments and give -Denv.uri="http://test"(or some dummy value).
+
+-----------------------------------------------------------------------------------------------------------------
+
+From: https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html
+
+Some people like to use (for example) --port=9000 instead of --server.port=9000 to set configuration properties on the command line. 
+You can enable this behavior by using placeholders in application.properties, as shown in the following example:
+
+server.port=${port:8080}
+
+In this specific case, the port binding works in a PaaS environment such as Heroku or Cloud Foundry. 
+In those two platforms, the PORT environment variable is set automatically and Spring can bind to capitalized synonyms for Environment properties.
+
+-----------------------------------------------------------------------------------------------------------------
+
