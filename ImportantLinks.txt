@@ -14,3 +14,7 @@ https://stackoverflow.com/questions/32997352/what-is-the-difference-between-putt
 3. Getting the /env endpoint work in spring-boot-actuator 2.x:
 
 https://www.baeldung.com/spring-boot-actuators#boot-2x-actuator
+
+4. Spring and Spring boot externalized configuration:
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html
