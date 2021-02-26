@@ -18,3 +18,25 @@ https://www.baeldung.com/spring-boot-actuators#boot-2x-actuator
 4. Spring and Spring boot externalized configuration:
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html
+
+---------------------------------------------------------------------------------------------------------------
+
+If the repository is file-based, the server creates an Environment from application.yml (shared between all clients) and foo.yml (with foo.yml taking precedence, where spring.application.name=foo). If the YAML files have documents inside them that point to Spring profiles, those are applied with higher precedence (in order of the profiles listed). If there are profile-specific YAML (or properties) files, these are also applied with higher precedence than the defaults. Higher precedence translates to a PropertySource listed earlier in the Environment. (These same rules apply in a standalone Spring Boot application.)
+
+You can set spring.cloud.config.server.accept-empty to false so that Server would return a HTTP 404 status, if the application is not found.By default, this flag is set to true.
+-----------------------------------------------------------------------------------------------------
+
+Every repository can also optionally store config files in sub-directories, and patterns to search for those directories can be specified as searchPaths. The following example shows a config file at the top level:
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          searchPaths: foo,bar*
+          
+In the preceding example, the server searches for config files in the top level and in the foo/ sub-directory and also any sub-directory whose name begins with bar.
+
+-----------------------------------------------------------------------------------------------------
+
