@@ -77,5 +77,27 @@ In the preceding example, the server clones team-a’s config-repo on startup, b
 Setting a repository to be cloned when the Config Server starts up can help to identify a misconfigured configuration source (such as an invalid repository URI) quickly, while the Config Server is starting up. With cloneOnStart not enabled for a configuration source, the Config Server may start successfully with a misconfigured or invalid configuration source and not detect an error until an application requests configuration from that configuration source.
 
 -----------------------------------------------------------------------------------------------------
+Spring Cloud Config Server also supports a search path with placeholders for the {application} and {profile} (and {label} if you need it), as shown in the following example:
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          searchPaths: '{application}'
+          
+The preceding listing causes a search of the repository for files in the same name as the directory (as well as the top level). Wildcards are also valid in a search path with placeholders (any matching directory is included in the search).
+-----------------------------------------------------------------------------------------------------
+
+You can control how often the config server will fetch updated configuration data from your Git backend by using spring.cloud.config.server.git.refreshRate. The value of this property is specified in seconds. By default the value is 0, meaning the config server will fetch updated configuration from the Git repo every time it is requested.
+
+-----------------------------------------------------------------------------------------------------
+
+With VCS-based backends (git, svn), files are checked out or cloned to the local filesystem. By default, they are put in the system temporary directory with a prefix of config-repo-. On linux, for example, it could be /tmp/config-repo-<randomid>. Some operating systems routinely clean out temporary directories. This can lead to unexpected behavior, such as missing properties. To avoid this problem, change the directory that Config Server uses by setting spring.cloud.config.server.git.basedir or spring.cloud.config.server.svn.basedir to a directory that does not reside in the system temp structure.
+
+-----------------------------------------------------------------------------------------------------
+
+
 
 
