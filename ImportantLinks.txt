@@ -104,6 +104,27 @@ The property overrides feature can also be used for setting global defaults, wit
 
 -----------------------------------------------------------------------------------------------------
 
+In some scenarios, you may wish to pull configuration data from multiple environment repositories. To do so, you can enable the composite profile in your configuration server’s application properties or YAML file. If, for example, you want to pull configuration data from a Subversion repository as well as two Git repositories, you can set the following properties for your configuration server:
 
+spring:
+  profiles:
+    active: composite
+  cloud:
+    config:
+      server:
+        composite:
+        -
+          type: svn
+          uri: file:///path/to/svn/repo
+        -
+          type: git
+          uri: file:///path/to/rex/git/repo
+        -
+          type: git
+          uri: file:///path/to/walter/git/repo
+          
+Using this configuration, precedence is determined by the order in which repositories are listed under the composite key. In the above example, the Subversion repository is listed first, so a value found in the Subversion repository will override values found for the same property in one of the Git repositories. A value found in the rex Git repository will be used before a value found for the same property in the walter Git repository.
+
+-----------------------------------------------------------------------------------------------------
 
 
