@@ -98,6 +98,12 @@ With VCS-based backends (git, svn), files are checked out or cloned to the local
 
 -----------------------------------------------------------------------------------------------------
 
+With file-based (git, svn, and native) repositories, resources with file names in application* (application.properties, application.yml, application-*.properties, and so on) are shared between all client applications. You can use resources with these file names to configure global defaults and have them be overridden by application-specific files as necessary.
+
+The property overrides feature can also be used for setting global defaults, with placeholders applications allowed to override them locally.
+
+-----------------------------------------------------------------------------------------------------
+
 
 
 
