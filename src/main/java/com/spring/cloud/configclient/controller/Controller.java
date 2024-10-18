@@ -10,7 +10,7 @@ public class Controller {
 	String role;
 	
 	@GetMapping("/test")
-	public void test(){
-		System.out.println("user.role: "+role);
+	public String test(){
+		return "user.role: "+role;
 	}
 }
